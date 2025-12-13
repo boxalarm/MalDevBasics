@@ -1,9 +1,6 @@
 // POC to demonstrate PPID spoofing
 // If compiling with cl.exe: cl /DUNICODE /D_UNICODE ppid_spoof.c
 
-// Compile with VS build tools:
-// cl .\InjectRemoteThread.c /DUNICODE /D_UNICODE
-
 #include <Windows.h>
 #include <stdio.h>
 
