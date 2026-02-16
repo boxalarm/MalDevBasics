@@ -1,5 +1,5 @@
 // POC to demonstrate PPID spoofing
-// If compiling with cl.exe: cl /DUNICODE /D_UNICODE ppid_spoof.c
+// If compiling with cl.exe: cl /DUNICODE /D_UNICODE PpidSpoof.c
 
 #include <Windows.h>
 #include <stdio.h>
