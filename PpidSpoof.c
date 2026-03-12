@@ -40,15 +40,16 @@ int main(int argc, char* argv[]) {
 		&hParent, sizeof(hParent), NULL, NULL);
 
 	WCHAR cmdline[MAX_PATH];
-	swprintf(cmdline, MAX_PATH, L"%hs", argv[1]);   // convert char* -> WCHAR*
+	swprintf(cmdline, MAX_PATH, L"%hs", argv[1]);   // convert char* to WCHAR*
 
 	STARTUPINFOEX si = { sizeof(si) };  // initialize the first member with the struct size
 	si.lpAttributeList = attributes;
 	PROCESS_INFORMATION pi;  // output parameter - no need to initialize
 
 	// Create a process with a spoofed parent process (hParent)
+	// We're also spoofing the current directory
 	BOOL created = CreateProcess(NULL, cmdline, NULL, NULL,
-		FALSE, EXTENDED_STARTUPINFO_PRESENT | CREATE_SUSPENDED, NULL, NULL, (STARTUPINFO*)&si, &pi);
+		FALSE, EXTENDED_STARTUPINFO_PRESENT, NULL, L"C:\\Windows\\System32", (STARTUPINFO*)&si, &pi);
 
 	if (created) {
 		printf("[+] Process created! New PID: %u (Parent: %u)\n", pi.dwProcessId, ppid);
