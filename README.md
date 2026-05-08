@@ -1,4 +1,4 @@
-# MalDevBasics
+# MalDevLab
 
 Foundational building blocks for malware development and Windows internals,
 written while working through various courses, including:
