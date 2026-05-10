@@ -80,7 +80,7 @@ VOID InstallHook() {
     // pReturnAddr = NtAllocateVirtualMemory + ORIG_BYTES_SIZE (past the bytes we saved)
     PVOID pReturnAddr = (PVOID)((PBYTE)g_pNtAllocate + ORIG_BYTES_SIZE);
     memcpy(&hook[2], &pReturnAddr, sizeof(PVOID));
-    memcpy((PBYTE)g_pTrampoline + ORIG_BYTES_SIZE, hook, HOOK_SIZE); // This copies our hook to the end of the trampoline
+    memcpy((PBYTE)g_pTrampoline + ORIG_BYTES_SIZE, hook, HOOK_SIZE); // This allows us to jump back to NtAllocateVirtualMemory + 16 (bypassing the hook to our detour function)
 
     // Repatch with our detour functions address
     PVOID pHook = (PVOID)HookedNtAllocateVirtualMemory;
